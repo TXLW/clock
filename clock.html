@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			html,
+			body {
+				margin: 0;
+				padding: 0;
+			}
+			
+		</style>
+	</head>
+
+	<body>
+		<canvas id="canvas" width="500px" height="500px"></canvas>
+	</body>
+	<script type="text/javascript">
+		function clock() {
+			var canvas = document.getElementById("canvas");
+			var ctx = canvas.getContext("2d");
+			//外圆
+			ctx.save();
+			ctx.beginPath();
+			ctx.lineWidth = 8;
+			ctx.arc(200, 200, 150, 0, Math.PI * 2, true);
+			ctx.closePath();
+			ctx.strokeStyle = "#197D7F";
+			ctx.stroke();
+			ctx.restore();
+			//分钟、秒
+			for(var i = 0; i < 60; i++) {
+				ctx.save();
+				ctx.translate(200, 200);
+				ctx.beginPath();
+				ctx.strokeStyle = "black";
+				ctx.lineWidth = 4;
+				ctx.rotate(i * 6 * Math.PI / 180);
+				ctx.moveTo(-140, 0);
+				ctx.lineTo(-135, 0);
+				ctx.strokeStyle = "#E1E7CB";
+				ctx.stroke();
+				ctx.closePath();
+				ctx.restore();
+			}
+			//小时
+			for(var i = 0; i < 60; i++) {
+				ctx.save();
+				ctx.translate(200, 200);
+				ctx.beginPath();
+				ctx.strokeStyle = "black";
+				ctx.lineWidth = 4;
+				ctx.rotate(i * 30 * Math.PI / 180);
+				ctx.moveTo(-130, 0);
+				ctx.lineTo(-120, 0);
+				ctx.strokeStyle = "#A5C5C0";
+				ctx.stroke();
+				ctx.closePath();
+				ctx.restore();
+			}
+			//时针
+			ctx.save();
+			ctx.translate(200, 200);
+			ctx.lineWidth = 8;
+			ctx.beginPath();
+			ctx.moveTo(-90, 0);
+			ctx.lineTo(0, 0);
+			ctx.strokeStyle = "#96B2B3";
+			ctx.stroke();
+			ctx.restore();
+			//分针
+			ctx.save();
+			ctx.translate(200, 200);
+			ctx.lineWidth = 5;
+			ctx.beginPath();
+			ctx.rotate(130* Math.PI / 180);
+			ctx.moveTo(-100, 0);
+			ctx.lineTo(0, 0);
+			ctx.strokeStyle = "#A3CAC7";
+			ctx.stroke();
+			ctx.restore();
+			//秒针
+			ctx.save();
+			ctx.translate(200, 200);
+			ctx.lineWidth = 4;
+			ctx.beginPath();
+			ctx.rotate(-100* Math.PI / 180);
+			ctx.moveTo(-120, 0);
+			ctx.lineTo(0, 0);
+			ctx.strokeStyle = "#ADC3C1";
+			ctx.stroke();
+			ctx.restore();
+		}
+		clock();
+	</script>
+
+</html>
